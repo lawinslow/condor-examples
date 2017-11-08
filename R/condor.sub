@@ -1,13 +1,13 @@
-executable=simple.sh
-arguments=run_on_condor.R $(Process)
-transfer_input_files=run_on_condor.R,.Renviron,lake_ids.tsv,packages.zip
+executable=simple.bat
+transfer_input_files=run_on_condor.R
+arguments = $(Process)
 universe = vanilla
 output = out/$(Process).out
 error = err/$(Process).err
 log = log/$(Process).log
-requirements = (TARGET.Arch == "X86_64") && (TARGET.OpSys == "LINUX") && (Machine =!= "igsarmewfsm000.er.usgs.gov")
+requirements = (TARGET.Arch == "X86_64") && (TARGET.OpSys == "WINDOWS")
 request_cpus = 1
 should_transfer_files = YES
 when_to_transfer_output = ON_EXIT
 notification = never
-queue 2492
+queue 8
